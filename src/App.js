@@ -1,15 +1,10 @@
 import React, { useReducer } from 'react';
 
-// const initialState = {
-//   count: 0,
-//   name: 'John',
-//   isActive: true,
-// };
-
-function reducer(state, action) {
+function seducer(state, action) {
   switch (action.type) {
     case 'INCREMENT':
       return { ...state, count: state.count + 1 };
+
     case 'TOGGLE':
       return { ...state, isActive: !state.isActive };
     default:
@@ -17,24 +12,27 @@ function reducer(state, action) {
   }
 }
 
-function App() {
-  const [state, dispatch] = useReducer(reducer, {
-    count: 0,
-    name: 'John',
-    isActive: true,
-  });
+export default function App() {
+  const [state, dispac] = useReducer(seducer, { count: 0, isActive: true });
 
   return (
     <div>
-      <p>Count: {state.count}</p>
-      <p>Name: {state.name}</p>
-      <p>Active: {state.isActive ? 'Yes' : 'No'}</p>
-      <button onClick={() => dispatch({ type: 'INCREMENT' })}>Increment</button>
-      <button onClick={() => dispatch({ type: 'TOGGLE' })}>
-        Toggle Active
+      <p>Count : {state.count}</p>
+      <p>Toggle : {state.isActive ? 'Yes' : 'NO'}</p>
+      <button
+        onClick={() => {
+          dispac({ type: 'INCREMENT' });
+        }}
+      >
+        +
+      </button>
+      <button
+        onClick={() => {
+          dispac({ type: 'TOGGLE' });
+        }}
+      >
+        {state.isActive ? ' ^_^ Yes' : ' ^-^ NO'}
       </button>
     </div>
   );
 }
-
-export default App;
