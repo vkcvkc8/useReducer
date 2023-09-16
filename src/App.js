@@ -1,10 +1,10 @@
 import React, { useReducer } from 'react';
 
-const initialState = {
-  count: 0,
-  name: 'John',
-  isActive: true,
-};
+// const initialState = {
+//   count: 0,
+//   name: 'John',
+//   isActive: true,
+// };
 
 function reducer(state, action) {
   switch (action.type) {
@@ -18,7 +18,11 @@ function reducer(state, action) {
 }
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, {
+    count: 0,
+    name: 'John',
+    isActive: true,
+  });
 
   return (
     <div>
@@ -26,7 +30,9 @@ function App() {
       <p>Name: {state.name}</p>
       <p>Active: {state.isActive ? 'Yes' : 'No'}</p>
       <button onClick={() => dispatch({ type: 'INCREMENT' })}>Increment</button>
-      <button onClick={() => dispatch({ type: 'TOGGLE' })}>Toggle Active</button>
+      <button onClick={() => dispatch({ type: 'TOGGLE' })}>
+        Toggle Active
+      </button>
     </div>
   );
 }
